@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-1
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"60000":{"name": "hello-world-1-neg"}}}'
+spec:
+  selector:
+    greeting: hello
+    version: one
+  ports:
+  - protocol: TCP
+    port: 60000
+    targetPort: 50000 
+  type: NodePort

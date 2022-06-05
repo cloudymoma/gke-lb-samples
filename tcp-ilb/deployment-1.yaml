@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ilb-deployment-1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ilb-deployment
+      subset: group1
+  template:
+    metadata:
+      labels:
+        app: ilb-deployment
+        subset: group1
+    spec:
+      containers:
+      - name: hello-app
+        image: us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0

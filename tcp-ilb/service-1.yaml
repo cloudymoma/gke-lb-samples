@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ilb-svc-1
+  annotations:
+    networking.gke.io/load-balancer-type: "Internal"
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  selector:
+    app: ilb-deployment
+    subset: group1
+  ports:
+  - name: tcp-port
+    protocol: TCP
+    port: 8080
+    targetPort: 8080

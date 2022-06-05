@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-2
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  selector:
+    greeting: hello
+    version: two
+  ports:
+  - protocol: TCP
+    port: 60000 
+    targetPort: 50000 
